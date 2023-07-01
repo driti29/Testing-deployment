@@ -8,26 +8,15 @@ on:
 
 permissions:
   contents: read
-
+  
+jobs:
+  deploy:
+         name: 'Deploy to Netlify'
+         runs-on: ubuntu-latest
+         steps:
+         - uses: jsmrcaga/action-netlify-deploy@v2.0.0
+      
 env: 
   netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
   netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
   index: ${{secrets.index}}
-  
-jobs:
-  build:
-    name: Test Build
-    timeout-minutes: 30
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-          cache: npm
-      - name: Installation
-        run: npm install
-      - name: Build 
-        run: npm run build
