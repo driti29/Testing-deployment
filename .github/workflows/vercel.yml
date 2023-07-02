@@ -8,12 +8,7 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        parallel: [1, 2, 3]
-
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
