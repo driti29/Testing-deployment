@@ -22,9 +22,6 @@ jobs:
 
       - name: Build
         run: npm run build
-      
-      - run: npm publish
-        if: github.event_name == 'push'
 
       - name: Deploy to Vercel
         env:
